@@ -124,8 +124,8 @@ async def datapi1():
     db=client["finale_pre"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
-    return newdata
+    #newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    return data
    
 
 
