@@ -120,7 +120,7 @@ async def read_root4():
 
 
 @app.get("pre_match/value")
-async def datapi1():
+async def valueBet_preMatch():
     db=client["finale_pre"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
