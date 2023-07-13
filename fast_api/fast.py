@@ -111,7 +111,7 @@ async def datapi():
    
 
 @app.get("/pre_match")
-async def read_root3():
+async def read_root4():
     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/pre_match.html")
 
 
