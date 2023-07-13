@@ -324,6 +324,7 @@ async def match_odd_recuperation(a):
                 resultat= collection4.update_one(filtre, mise_a_jour)
                 if resultat.modified_count > 0:
                     print("Mise à jour effectuée avec succès.")
+                    v["N_update"]+=1
                 else:
                     print("Aucun document mis à jour.")
             else:
