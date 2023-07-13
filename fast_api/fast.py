@@ -122,8 +122,8 @@ async def read_root4():
 @app.get("pre_match/value")
 async def valueBet_preMatch():
     db=client["finale_pre"]
-    collection6=db['valuebet']
-    data=list(collection6.find({},{"_id":0}))
+    collection7=db['valuebet']
+    data=list(collection7.find({},{"_id":0}))
     #newdata=list(filter(lambda x:x["valeur"]<2.21,data))
     return data
    
