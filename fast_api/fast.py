@@ -110,7 +110,23 @@ async def datapi():
     return newdata
    
 
+@app.get("/pre_match")
+async def read_root3():
+    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/pre_match.html")
 
+
+
+
+
+
+@app.get("m/prematch")
+async def datapi1():
+    db=client["finale_pre"]
+    collection6=db['valuebet']
+    data=list(collection6.find({},{"_id":0}))
+    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    return newdata
+   
 
 
 
