@@ -319,7 +319,7 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
 #over_under_traitement(home_handicap=-4,away_handicap=4,G=3,T_home=7,T_away=8)
 async def over_under_recuperation(a):
 
-    Id = a["id_half_1_5_1xbet"]
+    Id = a["id_half_2_5_1xbet"]
     # Le lien ici est pour les matchs en direct (liveFeed)
     url = f"https://1xbet.mobi/LiveFeed/GetGameZip?id={Id}&lng=fr&tzo=2&isSubGames=true&GroupEvents=true&countevents=2500&grMode=2&country=182&marketType=1&mobi=true"
     try:
@@ -329,7 +329,7 @@ async def over_under_recuperation(a):
 
 
 
-    Id1=a["id_half_1_5_betkeen"]
+    Id1=a["id_half_2_5_betkeen"]
     url1=f"https://mob.easysport.bet/Home/GetUpdateForm/?isaustralien=true&marketid={Id1}"
     try:
         data1= await fetch_data(url1)
