@@ -67,7 +67,7 @@ headers = {
 }
 
 db_over_under=client["finale"]
-collection1=db_over_under["First Half Goals 1.5"]
+collection1=db_over_under["First Half Goals 2.5"]
 data=list(collection1.find({},{"_id":0}))
 
 collection2=db_over_under["surebet"]
