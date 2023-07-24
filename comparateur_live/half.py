@@ -145,11 +145,19 @@ def filtarage_surbet():
     temps=time.time()-2500
     result1=collection.delete_many({"last_update":{"$lt":temps}})
 
+
 import unicodedata
 
 def enlever_caracteres_speciaux(chaine):
     chaine = unicodedata.normalize('NFKD', chaine).encode('ASCII', 'ignore').decode('utf-8')
     return chaine
+
+
+import re
+
+def enlever_caracteres_speciaux1(chaine):
+    caracteres_speciaux = r"[(){},.'\"]"
+    return re.sub(caracteres_speciaux, '', chaine)
 
 
 # Cette fonction sert à supprimer les surebets qui ont 5 minutes d'existence sans être mis à jour
@@ -193,13 +201,17 @@ async def match_odd_recuperation(a):
         print(f'Probleme {e} au niveau de l api betkeen')
         return None
     betkeen=data1["EventMarket"]
-    O1=data["Value"]["O1"]
-    O2=data["Value"]["O2"]
+    O1=data["Value"]["O1"].replace(" ","-")
+    O1=enlever_caracteres_speciaux(O1)
+    O2=data["Value"]["O2"].replace(" ","-")
+    O2=enlever_caracteres_speciaux(O2)
     _1xbet=f"{O1} v {O2}"
-    unxbet=f"{O1} {O2}".replace(" ","-")
+    unxbet=f"{O1}-{O2}".replace(" ","-")
     unxbet=enlever_caracteres_speciaux(unxbet)
-
+    unxbet=enlever_caracteres_speciaux1(unxbet)
     ligue=data["Value"]["LE"].replace(" ","-").replace(".","")
+    ligue=enlever_caracteres_speciaux(ligue)
+    ligue=enlever_caracteres_speciaux1(ligue)
     LI=data["Value"]["LI"]
     lien=f"https://1xbet.mobi/fr/live/football/{LI}-{ligue}/{Id}-{unxbet}"
     print(lien)

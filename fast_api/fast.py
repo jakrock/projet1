@@ -129,6 +129,55 @@ async def valueBet_preMatch():
    
 
 
+@app.get("/mi_temps")
+async def read_root6():
+    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/mi_temps.html")
+
+
+import time
+@app.get("/miTemps")
+async def datapi1():
+    db=client["finale"]
+    collection6=db['valuebet']
+    data=list(collection6.find({},{"_id":0}))
+    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    newdata1=list(filter(lambda x:(time.time()-x["heure_debut"]>45*60) and (time.time()-x["heure_debut"]<67*60),newdata))
+    return newdata1
+
+
+@app.get("/debut_match")
+async def read_root7():
+    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/debut_match.html")
+
+
+
+@app.get("/debutMatch")
+async def datapi2():
+    db=client["finale"]
+    collection6=db['valuebet']
+    data=list(collection6.find({},{"_id":0}))
+    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    newdata1=list(filter(lambda x: time.time()-x["heure_debut"]<10*60,newdata))
+    return newdata1
+
+
+@app.get("/only_half")
+async def read_root8():
+    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/only_half.html")
+
+
+
+@app.get("/onlyHalf")
+async def datapi3():
+    db=client["finale"]
+    collection6=db['valuebet']
+    data=list(collection6.find({},{"_id":0}))
+    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    newdata1=list(filter(lambda x: x["market"]!='Goal Lines' and  x["market"]!='Match Odds',newdata))
+    return newdata1
+
+
+
 
 if __name__ == "__main__":
     import uvicorn
