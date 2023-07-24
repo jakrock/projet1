@@ -147,7 +147,7 @@ async def datapi2():
     return newdata1
 
 
-@app.get("/only_half")
+'''@app.get("/only_half")
 async def read_root8():
     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/only_half.html")
 
@@ -160,7 +160,7 @@ async def datapi3():
     data=list(collection6.find({},{"_id":0}))
     newdata=list(filter(lambda x:x["valeur"]<2.21,data))
     newdata1=list(filter(lambda x: x["market"]!='Goal Lines' and  x["market"]!='Match Odds',newdata))
-    return newdata1
+    return newdata1'''
 
 
 
