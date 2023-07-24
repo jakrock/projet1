@@ -33,8 +33,8 @@ async def main():
 
     # Planifiez l'exécution des fonctions avec un intervalle spécifique (par exemple, toutes les 5 secondes)
 
-    scheduler.add_job(main5, 'interval', seconds=15, max_instances=16)
-    scheduler.add_job(main6, 'interval', seconds=15, max_instances=16)
+    scheduler.add_job(main5, 'interval', seconds=13, max_instances=16)
+    scheduler.add_job(main6, 'interval', seconds=13, max_instances=16)
 
 
 
