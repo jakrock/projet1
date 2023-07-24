@@ -3,26 +3,15 @@ from fastapi.responses import FileResponse
 import pymongo
 
 client=pymongo.MongoClient('localhost',27017)
-db=client["finale"]
+
 # collection5=db["data supprimer"]
 # collection6=db["data supprimer1"]
 #collection6=db["pure_valubet"]
 
 app = FastAPI()
 
-@app.get("/indexsurebet")
-async def read_root2():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexsurebet.html")
 
-
-
-
-
-@app.get("/")
-async def read_root():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/index.html")
-
-
+#
 # @app.get("/mini")
 # async def read_root1():
 #     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
@@ -30,9 +19,6 @@ async def read_root():
 
 @app.get("/item/{item_id}")
 async def valueApi(item_id:str):
-
-
-
     db_match_odd=client["finale"]
     collection1=db_match_odd["Match Odds"]
     #data=list(collection1.find({},{"_id":0}))
