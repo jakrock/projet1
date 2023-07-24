@@ -11,10 +11,10 @@ client=pymongo.MongoClient('localhost',27017)
 app = FastAPI()
 
 
-#
-# @app.get("/mini")
-# async def read_root1():
-#     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
+
+@app.get("/mini")
+async def read_root1():
+     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
 
 
 @app.get("/item/{item_id}")
@@ -126,7 +126,8 @@ async def datapi1():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < 2.21, data))
+
     newdata1=list(filter(lambda x:(time.time()-x["heure_debut"]>45*60) and (time.time()-x["heure_debut"]<67*60),newdata))
     return newdata1
 
@@ -142,12 +143,13 @@ async def datapi2():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < 2.21, data))
+
     newdata1=list(filter(lambda x: time.time()-x["heure_debut"]<10*60,newdata))
     return newdata1
 
 
-'''@app.get("/only_half")
+@app.get("/only_half")
 async def read_root8():
     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/only_half.html")
 
@@ -158,9 +160,10 @@ async def datapi3():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata=list(filter(lambda x:x["valeur"]<2.21,data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < 2.21, data))
+
     newdata1=list(filter(lambda x: x["market"]!='Goal Lines' and  x["market"]!='Match Odds',newdata))
-    return newdata1'''
+    return newdata1
 
 
 

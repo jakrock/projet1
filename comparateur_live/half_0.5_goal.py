@@ -191,7 +191,7 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
     p_over_betkeen = (1 / over_betkeen) 
     p_under_betkeen = (1 / under_betkeen) 
     marge =  (p_under_betkeen + p_over_betkeen)-1
-    if marge <0.09 and over_betkeen<9 and under_betkeen<9:
+    if marge <0.07 and over_betkeen<9 and under_betkeen<9:
         m_over_betkeen = (2 * over_betkeen) / (2 - marge * over_betkeen)
         m_under_betkeen = (2 * under_betkeen) / (2 - marge * under_betkeen)
 
@@ -215,9 +215,13 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
         if value_over_1xbet:
             value[f"value_over_half_1xbet {goal}".replace(".",",")]=value_over_1xbet
             value["ecart"]=value_over_1xbet-over_betkeen
+            v["valeur"]=value_over_1xbet
+
         if value_under_1xbet:
             value[f"value_under_half_1xbet {goal}".replace(".",",")]=value_under_1xbet
             value["ecart"]=value_under_1xbet-under_betkeen
+            v["valeur"]=value_under_1xbet
+
         if value:
             v["valuebet"]=value
             v["but"]=goal

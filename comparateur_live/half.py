@@ -289,12 +289,18 @@ async def match_odd_recuperation(a):
         if value_home_half_1xbet:
             value["value_home_half_1xbet"]=value_home_half_1xbet
             value["ecart"]=value_home_half_1xbet-home_half_betkeen
+            v["valeur"]=value_home_half_1xbet
+
         if value_away_half_1xbet:
             value["value_away_half_1xbet"]=value_away_half_1xbet
             value["ecart"]=value_away_half_1xbet-away_half_betkeen
+            v["valeur"]=value_away_half_1xbet
+
         if value_draw_half_1xbet:
             value["value_draw_half_1xbet"]=value_draw_half_1xbet
             value["ecart"]=value_draw_half_1xbet-draw_half_betkeen
+            v["valeur"]=value_draw_half_1xbet
+
         print(value)
         v["valuebet"]=value
         v["last_update"]=time.time()

@@ -216,9 +216,13 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
         if value_over_1xbet:
             value[f"value_over_half_1xbet {goal}".replace(".",",")]=value_over_1xbet
             value["ecart"]=value_over_1xbet-over_betkeen
+            v["valeur"]=value_over_1xbet
+
         if value_under_1xbet:
             value[f"value_under_half_1xbet {goal}".replace(".",",")]=value_under_1xbet
             value["ecart"]=value_under_1xbet-under_betkeen
+            v["valeur"]=value_under_1xbet
+
         if value:
             v["valuebet"]=value
             v["but"]=goal
