@@ -93,7 +93,9 @@ async def datapi():
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
     newdata=list(filter(lambda x:x["valeur"]<2.21,data))
-    return newdata
+    newdata1=list(filter(lambda x: x["market"]=='Goal Lines' and  x["market"]=='Match Odds',newdata))
+
+    return newdata1
    
 
 @app.get("/pre_match")
