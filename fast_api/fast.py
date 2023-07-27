@@ -92,7 +92,7 @@ async def datapi():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata=list(filter(lambda x:x["valeur"]<1.85,data))
+    newdata=list(filter(lambda x:x["valeur"]<1.75,data))
     newdata1=list(filter(lambda x: x["market"]=='Goal Lines' or  x["market"]=='Match Odds',newdata))
 
     return newdata1
@@ -128,7 +128,7 @@ async def datapi1():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.85, data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.75, data))
 
     newdata1=list(filter(lambda x:(time.time()-x["heure_debut"]>45*60) and (time.time()-x["heure_debut"]<67*60),newdata))
     return newdata1
@@ -145,7 +145,7 @@ async def datapi2():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.85, data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.75, data))
 
     newdata1=list(filter(lambda x: time.time()-x["heure_debut"]<10*60,newdata))
     return newdata1
@@ -162,7 +162,7 @@ async def datapi3():
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.85, data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.75, data))
 
     newdata1=list(filter(lambda x: x["market"]!='Goal Lines' and  x["market"]!='Match Odds',newdata))
     return newdata1
