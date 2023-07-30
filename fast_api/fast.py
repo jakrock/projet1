@@ -87,7 +87,7 @@ async def read_root3():
     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
 
 
-@app.get("/mini1/mini2/{item_id}")
+@app.get("/mini1/mini2/{item_id:int}")
 async def datapi(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
@@ -123,7 +123,7 @@ async def read_root6():
 
 
 import time
-@app.get("/miTemps/{item_id}")
+@app.get("/miTemps/{item_id:int}")
 async def datapi1(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
@@ -140,7 +140,7 @@ async def read_root7():
 
 
 
-@app.get("/2Match/{item_id}")
+@app.get("/2Match/{item_id:int}")
 async def datapi2(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
@@ -157,7 +157,7 @@ async def read_root8():
 
 
 
-@app.get("/onlyHalf/{item_id}")
+@app.get("/onlyHalf/{item_id:int}")
 async def datapi3(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
