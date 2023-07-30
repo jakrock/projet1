@@ -87,12 +87,12 @@ async def read_root3():
     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
 
 
-@app.get("/mini1/mini2")
-async def datapi():
+@app.get("/mini1/mini2/{item_id}")
+async def datapi(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata=list(filter(lambda x:x["valeur"]<1.75,data))
+    newdata=list(filter(lambda x:x["valeur"]<item_id , data))
     newdata1=list(filter(lambda x: x["market"]=='Goal Lines' or  x["market"]=='Match Odds',newdata))
 
     return newdata1
@@ -123,12 +123,12 @@ async def read_root6():
 
 
 import time
-@app.get("/miTemps")
-async def datapi1():
+@app.get("/miTemps/{item_id}")
+async def datapi1(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.75, data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) <item_id, data))
 
     newdata1=list(filter(lambda x:(time.time()-x["heure_debut"]>45*60) and (time.time()-x["heure_debut"]<67*60),newdata))
     return newdata1
@@ -136,18 +136,18 @@ async def datapi1():
 
 @app.get("/debut_match")
 async def read_root7():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/debut_match.html")
+    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/2_match.html")
 
 
 
-@app.get("/debutMatch")
-async def datapi2():
+@app.get("/2Match/{item_id}")
+async def datapi2(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.75, data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < item_id, data))
 
-    newdata1=list(filter(lambda x: time.time()-x["heure_debut"]<10*60,newdata))
+    newdata1=list(filter(lambda x: time.time()-x["heure_debut"]>63*60,newdata))
     return newdata1
 
 
@@ -157,12 +157,12 @@ async def read_root8():
 
 
 
-@app.get("/onlyHalf")
-async def datapi3():
+@app.get("/onlyHalf/{item_id}")
+async def datapi3(item_id:int):
     db=client["finale"]
     collection6=db['valuebet']
     data=list(collection6.find({},{"_id":0}))
-    newdata = list(filter(lambda x: x.get("valeur", 0) < 1.75, data))
+    newdata = list(filter(lambda x: x.get("valeur", 0) < item_id, data))
 
     newdata1=list(filter(lambda x: x["market"]!='Goal Lines' and  x["market"]!='Match Odds',newdata))
     return newdata1
