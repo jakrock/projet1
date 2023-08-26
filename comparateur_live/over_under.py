@@ -160,7 +160,7 @@ def enlever_caracteres_speciaux(chaine):
 import re
 
 def enlever_caracteres_speciaux1(chaine):
-    caracteres_speciaux = r"[(){},.'\"]"
+    caracteres_speciaux = r"[(){},&.'\"]"
     return re.sub(caracteres_speciaux, '', chaine)
 
 
