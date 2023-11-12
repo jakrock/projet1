@@ -116,6 +116,7 @@ browser.quit()
 
 
 
+service1=Service(ChromeDriverManager().install())
 
 
 option = webdriver.ChromeOptions()
