@@ -17,9 +17,9 @@ import time
 
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 
+from selenium.webdriver.firefox.service import Service as FirefoxService
 
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 import re
 #from google.cloud import firestore
@@ -36,10 +36,15 @@ db=client["info_betkeen"]
 collection= db["cookie_desktop"]
 collection1=db["cookie_mobile"]
 
-service1=Service(ChromeDriverManager().install())
-option = webdriver.ChromeOptions()
-option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
-browser = webdriver.Chrome(service=service1, options=option)
+
+service1 = FirefoxService(executable_path=GeckoDriverManager().install())
+
+option = webdriver.FirefoxOptions()
+
+#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+
+browser = webdriver.Firefox(service=service1, options=option)
+
 url = "https://desk.easysport.bet/Account/LogIn?ReturnUrl=%2fHome%2fbetfair"
 browser.execute_script("window.performance.setResourceTimingBufferSize(10000);")    
 
@@ -116,11 +121,12 @@ browser.quit()
 
 
 
-service1=Service(ChromeDriverManager().install())
+service1 = FirefoxService(executable_path=GeckoDriverManager().install())
+
+option = webdriver.FirefoxOptions()
 
 
-option = webdriver.ChromeOptions()
-option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 browser = webdriver.Chrome(service=service1, options=option)
 url = "https://mob.easysport.bet/Account/Login"
     
