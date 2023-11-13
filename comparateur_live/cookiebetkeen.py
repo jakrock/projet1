@@ -41,7 +41,7 @@ service1 = FirefoxService(executable_path=GeckoDriverManager().install())
 
 option = webdriver.FirefoxOptions()
 
-#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 
 browser = webdriver.Firefox(service=service1, options=option)
 
@@ -126,7 +126,7 @@ service1 = FirefoxService(executable_path=GeckoDriverManager().install())
 option = webdriver.FirefoxOptions()
 
 
-#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 browser = webdriver.Chrome(service=service1, options=option)
 url = "https://mob.easysport.bet/Account/Login"
     
