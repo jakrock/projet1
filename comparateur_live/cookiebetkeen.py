@@ -20,6 +20,8 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.firefox.service import Service as FirefoxService
 
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.options import Options
+
 
 import re
 #from google.cloud import firestore
@@ -38,13 +40,19 @@ collection= db["cookie_desktop"]
 collection1=db["cookie_mobile"]
 
 
+
+option = Options()
+#options.headless = True
+
+#driver = webdriver.Firefox(options=options)
+
 service1 = FirefoxService(executable_path=GeckoDriverManager().install(),log_output=subprocess.STDOUT)
 print(service1)
 #option = webdriver.FirefoxOptions()
 
-#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 
-browser = webdriver.Firefox(service=service1)
+browser = webdriver.Firefox(service=service1,options=option)
 
 url = "https://desk.easysport.bet/Account/LogIn?ReturnUrl=%2fHome%2fbetfair"
 browser.execute_script("window.performance.setResourceTimingBufferSize(10000);")    
