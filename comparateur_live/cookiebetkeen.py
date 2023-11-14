@@ -23,6 +23,12 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.options import Options
 
 
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
+
+
+
 import re
 #from google.cloud import firestore
 
@@ -39,7 +45,7 @@ db=client["info_betkeen"]
 collection= db["cookie_desktop"]
 collection1=db["cookie_mobile"]
 
-
+"""
 
 option = Options()
 #options.headless = True
@@ -52,7 +58,17 @@ print(service1)
 
 option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 
-browser = webdriver.Firefox(service=service1,options=option)
+browser = webdriver.Firefox(service=service1,options=option)"""
+
+chrome_options = ChromeOptions()
+chrome_options.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+
+# Initialisation du service Chrome
+service = ChromeService(executable_path=ChromeDriverManager().install(), log_path="chrome.log")
+
+# Création d'une instance du navigateur Chrome
+browser = webdriver.Chrome(service=service, options=chrome_options)
+
 
 url = "https://desk.easysport.bet/Account/LogIn?ReturnUrl=%2fHome%2fbetfair"
 browser.execute_script("window.performance.setResourceTimingBufferSize(10000);")    
