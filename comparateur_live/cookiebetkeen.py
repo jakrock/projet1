@@ -26,6 +26,7 @@ import re
 
 # Initialisez une instance du client Firestore
 #db = firestore.Client()
+import subprocess
 
 
 
@@ -37,13 +38,13 @@ collection= db["cookie_desktop"]
 collection1=db["cookie_mobile"]
 
 
-service1 = FirefoxService(executable_path=GeckoDriverManager().install())
+service1 = FirefoxService(executable_path=GeckoDriverManager().install(),log_output=subprocess.STDOUT)
+print(service1)
+#option = webdriver.FirefoxOptions()
 
-option = webdriver.FirefoxOptions()
+#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 
-option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
-
-browser = webdriver.Firefox(service=service1, options=option)
+browser = webdriver.Firefox(service=service1)
 
 url = "https://desk.easysport.bet/Account/LogIn?ReturnUrl=%2fHome%2fbetfair"
 browser.execute_script("window.performance.setResourceTimingBufferSize(10000);")    
@@ -123,11 +124,13 @@ browser.quit()
 
 service1 = FirefoxService(executable_path=GeckoDriverManager().install())
 
-option = webdriver.FirefoxOptions()
+#option = webdriver.FirefoxOptions()
 
 
-option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
-browser = webdriver.Chrome(service=service1, options=option)
+#option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+
+browser = webdriver.Firefox(service=service1)
+
 url = "https://mob.easysport.bet/Account/Login"
     
 
