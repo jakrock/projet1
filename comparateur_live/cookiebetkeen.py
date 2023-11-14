@@ -144,7 +144,7 @@ time.sleep(7)
 browser.quit()
 
 
-
+"""
 
 service1 = FirefoxService(executable_path=GeckoDriverManager().install())
 
@@ -153,7 +153,18 @@ service1 = FirefoxService(executable_path=GeckoDriverManager().install())
 
 #option.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
 
-browser = webdriver.Firefox(service=service1)
+browser = webdriver.Firefox(service=service1)"""
+
+
+chrome_options = ChromeOptions()
+chrome_options.add_argument("--headless")  # Exécution en mode headless pour éviter l'affichage du navigateur
+
+# Initialisation du service Chrome
+service = ChromeService(executable_path=ChromeDriverManager().install(), log_path="chrome.log")
+
+# Création d'une instance du navigateur Chrome
+browser = webdriver.Chrome(service=service, options=chrome_options)
+
 
 url = "https://mob.easysport.bet/Account/Login"
     
