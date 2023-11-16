@@ -118,7 +118,7 @@
     //     return [valeurInput1,valeurInput2]
     // }
 
-    const url="http://35.244.7.149:8000/pre_match/value"
+    const url="http://35.244.7.149:80/pre_match/value"
     const getdata = async (url) => {
         const response = await fetch(url);
         const data = await response.json();
@@ -170,7 +170,7 @@
 
             
 
-            fetch('http://35.244.7.149:8000/item/retour', {
+            fetch('http://35.244.7.149:80/item/retour', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -317,7 +317,7 @@ function startInterval() {
   interval = setInterval(async ()=>{
         let a=await updateData()
     },
-    25000
+    30000
 )
 }
 

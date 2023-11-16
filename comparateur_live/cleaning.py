@@ -46,14 +46,14 @@ resultat=list(collection5.find({},{"_id":0}))
 data=list(collection4.find({},{"_id":0}))
 #pprint(list(resultat))
 
-with open(f"depot/donneesValuebet{str(uuid.uuid4())}--{time.time()}.json", "w") as f:
-    json.dump(data, f)
+"""with open(f"depot/donneesValuebet{str(uuid.uuid4())}--{time.time()}.json", "w") as f:
+    json.dump(data, f)"""
 
 r=collection4.delete_many({})
 
-
+"""
 with open(f"depot/donneesSurebet{str(uuid.uuid4())}--{time.time()}.json", "w") as f:
-    json.dump(resultat, f)
+    json.dump(resultat, f)"""
 
 r=collection5.delete_many({})
 

@@ -118,7 +118,7 @@
     //     return [valeurInput1,valeurInput2]
     // }
 
-    const url="http://147.139.199.189:8000/miTemps/2.55"
+    const url="http://147.139.199.189:80/miTemps/2.55"
     const getdata = async (url) => {
         const response = await fetch(url);
         const data = await response.json();
@@ -170,7 +170,7 @@
 
             
 
-            fetch('http://147.139.199.189:8000/item/retour', {
+            fetch('http://147.139.199.189:80/item/retour', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -323,7 +323,7 @@ function startInterval() {
   interval = setInterval(async ()=>{
         let a=await updateData()
     },
-    10000
+    30000
 )
 }
 

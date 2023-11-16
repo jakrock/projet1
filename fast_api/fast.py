@@ -14,7 +14,7 @@ app = FastAPI()
 
 @app.get("/mini")
 async def read_root1():
-     return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
+     return FileResponse("/home/boss/projet1/fast_api/templates/indexmini.html")
 
 
 @app.get("/item/{item_id}")
@@ -84,7 +84,7 @@ async def create_item1(request: Request):
 
 @app.get("/mini")
 async def read_root3():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/indexmini.html")
+    return FileResponse("/home/boss/projet1/fast_api/templates/indexmini.html")
 
 
 @app.get("/mini1/mini2/{item_id:float}")
@@ -100,7 +100,7 @@ async def datapi(item_id:float):
 
 @app.get("/pre_match")
 async def read_root4():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/pre_match.html")
+    return FileResponse("/home/boss/projet1/fast_api/templates/pre_match.html")
 
 
 
@@ -119,7 +119,7 @@ async def valueBet_preMatch():
 
 @app.get("/mi_temps")
 async def read_root6():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/mi_temps.html")
+    return FileResponse("/home/boss/projet1/fast_api/templates/mi_temps.html")
 
 
 import time
@@ -136,7 +136,7 @@ async def datapi1(item_id:float):
 
 @app.get("/debut_match")
 async def read_root7():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/2_match.html")
+    return FileResponse("/home/boss/projet1/fast_api/templates/2_match.html")
 
 
 
@@ -153,7 +153,7 @@ async def datapi2(item_id:float):
 
 @app.get("/only_half")
 async def read_root8():
-    return FileResponse("/home/romualdjja/projet1/projet1/fast_api/templates/only_half.html")
+    return FileResponse("/home/boss/projet1/fast_api/templates/only_half.html")
 
 
 
@@ -172,4 +172,4 @@ async def datapi3(item_id:float):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app,host="0.0.0.0",port=8000)
+    uvicorn.run(app,host="0.0.0.0",port=80)
