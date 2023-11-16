@@ -23,7 +23,7 @@ import sys
 #sys.stdout = open("NUL", "w")
 
 import subprocess
-subprocess.run(['python', 'cookiebetkeen.py'])
+subprocess.run(['python3', 'cookiebetkeen.py'])
 def timestamp(x):
     # Convertir la date en format datetime
     x=x.replace(":"," ")
@@ -150,8 +150,8 @@ print((valeur))
 s=db.con.delete_many({})
 x=db.con.insert_one({"events":valeur})
 import subprocess 
-subprocess.run(['python', 'donnee.py'])
-subprocess.run(['python', 'traitement.py'])
+subprocess.run(['python3', 'donnee.py'])
+subprocess.run(['python3', 'traitement.py'])
 
 client.close()
 
