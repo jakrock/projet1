@@ -384,7 +384,7 @@ async def over_under_recuperation(a):
     ligue=enlever_caracteres_speciaux(ligue)
     ligue=enlever_caracteres_speciaux1(ligue)
     LI=data["Value"]["LI"]
-    lien=f"https://1xlite-118654.top/fr/live/football/{LI}-{ligue}/{Id}-{unxbet}"
+    lien=f"https://betwinner1.com/fr/live/football/{LI}-{ligue}/{Id}-{unxbet}"
     print(lien)
     lien1=f"https://desk.easysport.bet/Home/FormBet/{Id1}"
     data1=data1["Selections"]
