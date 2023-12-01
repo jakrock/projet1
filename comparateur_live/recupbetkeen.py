@@ -42,7 +42,7 @@ def timestamp(x):
         "Sep.": 9,
         "Oct.": 10,
         "nov.": 11,
-        "Dec.": 12
+        "déc.": 12
     }
     month = month_num[month]
     date_obj = datetime(int(year), month, int(day), int(hour), int(minute))
