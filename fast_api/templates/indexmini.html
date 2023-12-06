@@ -144,8 +144,10 @@
                                 <h5 class="e1xbet">${_1xbet} <a href="${i.lien}" target="_blank">1xbet</a></h5>
                                 <h5 class="ebetkeen">${i.betkeen} <a href="${i.lien1}" target="_blank">betkeen</a></h5>
                                 <h3 class="valuebet">${valuebetElements}</h3>
-                                <button onclick="toggleHiddenData(this)" class="cbutton">Afficher/Cacher</button>
-                                <button  onclick="deleteData(this)" class="cbutton">supprimer</button>
+                                <button onclick="toggleHiddenData(this)" class="cbutton">Afficher/Cacher${i.valeur_lay}</button>
+                                <button  onclick="deleteData(this)" class="cbutton">supprimer${i.ecart_lay}</button>
+                                <h2 class="valuebet1><span class="spanv"></span>">lay=${i.valeur_lay}</span><span class="spanv">${i.ecart_lay}</span></h2>
+
                                 <div class="hidden-data" style="display: none;">
                                     <script type="application/json">
                                         ${JSON.stringify(i)}
@@ -282,8 +284,9 @@ async function updateData() {
                                 <h5 class="e1xbet">${_1xbet} <a href="${i.lien}" target="_blank">1xbet</a></h5>
                                 <h5 class="ebetkeen">${i.betkeen} <a href="${i.lien1}" target="_blank">betkeen</a></h5>
                                 <h3 class="valuebet">${valuebetElements}</h3>
-                                <button  onclick="deleteData(this)" class="cbutton">supprimer</button>
-                                <button onclick="toggleHiddenData(this)" class="cbutton">Afficher/Cacher</button>
+                                <button  onclick="deleteData(this)" class="cbutton">supprimer${i.valeur_lay}</button>
+                                <button onclick="toggleHiddenData(this)" class="cbutton">Afficher/Cacher${i.ecart_lay}</button>
+                                <h2 class="valuebet1><span class="spanv"></span>">lay=${i.valeur_lay}</span><span class="spanv">${i.ecart_lay}</span></h2>
                                 <div class="hidden-data" style="display: none;">
                                     <script type="application/json">
                                         ${JSON.stringify(i)}
