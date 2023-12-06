@@ -126,8 +126,8 @@ def flatten(l):
             yield item
 #cette fonction sert a supprimer les surebet qui on 5minut d exitant sans etre updater
 def last_surebet():
-	cinq_minute=time.time()-130
-	result = collection2.delete_many({"last_update": {"$lt": cinq_minute}})
+    cinq_minute=time.time()-130
+    result = collection2.delete_many({"last_update": {"$lt": cinq_minute}})
 
 def last_surebet1():
     cinq_minute=time.time()-130
@@ -185,6 +185,10 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
     over_betkeen=list(filter(lambda x: x["SelectionName"]==f"Over {goal}",data1))[0]["Back1Odds"]
     under_betkeen=list(filter(lambda x: x["SelectionName"]==f"Under {goal}",data1))[0]["Back1Odds"]
     
+    over_betkeen_lay=list(filter(lambda x: x["SelectionName"]==f"Over {goal}",data1))[0]["Lay1Odds"]
+    under_betkeen_lay=list(filter(lambda x: x["SelectionName"]==f"Under {goal}",data1))[0]["Lay1Odds"]
+    
+
 
 
 
@@ -200,20 +204,35 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
     
     value_over_1xbet=""
     value_under_1xbet=""
+    #variable des ecart lay Ici
+    ecart_over_lay=""
+    ecart_under_lay=""
 
+
+    value_over_lay=""
+    value_under_lay=""
     p_over_betkeen = (1 / over_betkeen) 
     p_under_betkeen = (1 / under_betkeen) 
     marge =  (p_under_betkeen + p_over_betkeen)-1
-    if marge <0.08 and over_betkeen<20 and under_betkeen<20:
+    if marge <0.07 and over_betkeen<20 and under_betkeen<20:
         m_over_betkeen = (2 * over_betkeen) / (2 - marge * over_betkeen)
         m_under_betkeen = (2 * under_betkeen) / (2 - marge * under_betkeen)
 
-        if (over_1xbet > m_over_betkeen) and (over_1xbet - m_over_betkeen > 0.05):
+        if (over_1xbet > m_over_betkeen) and (over_1xbet - m_over_betkeen > 0.06) and (over_1xbet > over_betkeen_lay):
+            #ajout de la valeur overlay ici
+            value_over_lay=over_betkeen_lay
+            ecart_over_lay=over_1xbet - over_betkeen_lay
+
             value_over_1xbet = over_1xbet
+
             print(value_over_1xbet)
 
-        if (under_1xbet > m_under_betkeen) and (under_1xbet - m_under_betkeen > 0.05):
+        if (under_1xbet > m_under_betkeen) and (under_1xbet - m_under_betkeen > 0.06) and (under_1xbet > under_betkeen_lay):
+            #ajout de la valeur underlay ici
+            value_under_lay=under_betkeen_lay
+            ecart_under_lay=under_1xbet - under_betkeen_lay
             value_under_1xbet = under_1xbet
+
             print(value_under_1xbet)
 
         
@@ -229,10 +248,17 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
             value[f"value_over_1xbet {goal}".replace(".",",")]=value_over_1xbet
             value["ecart"]=value_over_1xbet-m_over_betkeen
             v["valeur"]=value_over_1xbet
+            v["valeur_lay"]=value_over_lay
+            v["ecart_lay"]=ecart_over_lay
+
         if value_under_1xbet:
             value[f"value_under_1xbet {goal}".replace(".",",")]=value_under_1xbet
             value["ecart"]=value_under_1xbet-m_under_betkeen
             v["valeur"]=value_under_1xbet
+            v["valeur_lay"]=value_under_lay
+
+            v["ecart_lay"]=ecart_under_lay
+
         if value:
             v["valuebet"]=value
             v["but"]=goal
