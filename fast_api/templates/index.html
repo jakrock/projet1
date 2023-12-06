@@ -287,6 +287,8 @@ async function updateData() {
                                 <h3 class="valuebet">${valuebetElements}</h3>
                                 <button  onclick="deleteData(this)" class="cbutton">supprimer</button>
                                 <button onclick="toggleHiddenData(this)" class="cbutton">Afficher/Cacher</button>
+
+                                <h3 class="valuebet1><span class="spanv"></span>">lay=${i.valeur_lay}</span><span class="spanv">${i.ecart_lay}</span></h3>
                                 <div class="hidden-data" style="display: none;">
                                     <script type="application/json">
                                         ${JSON.stringify(i)}
