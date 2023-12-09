@@ -261,7 +261,7 @@ async def match_odd_recuperation(a):
     p_draw_betkeen=(1/draw_betkeen)
 
     marge=(p_home_betkeen+p_away_betkeen+p_draw_betkeen) -1
-    if marge<0.07 and home_betkeen<10 and away_betkeen<10 and draw_betkeen<10:
+    if marge<0.05 and home_betkeen<10 and away_betkeen<10 and draw_betkeen<10:
         m_home_betkeen=(3*home_betkeen)/(3-marge*home_betkeen)
         m_away_betkeen=(3*away_betkeen)/(3-marge*away_betkeen)
         m_draw_betkeen=(3*draw_betkeen)/(3-marge*draw_betkeen)

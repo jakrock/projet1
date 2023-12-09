@@ -214,11 +214,11 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
     p_over_betkeen = (1 / over_betkeen) 
     p_under_betkeen = (1 / under_betkeen) 
     marge =  (p_under_betkeen + p_over_betkeen)-1
-    if marge <0.07 and over_betkeen<20 and under_betkeen<20:
+    if marge <0.05 and over_betkeen<20 and under_betkeen<20:
         m_over_betkeen = (2 * over_betkeen) / (2 - marge * over_betkeen)
         m_under_betkeen = (2 * under_betkeen) / (2 - marge * under_betkeen)
 
-        if (over_1xbet > m_over_betkeen) and (over_1xbet - m_over_betkeen > 0.06) and (over_1xbet >= over_betkeen_lay):
+        if (over_1xbet > m_over_betkeen) and (over_1xbet - m_over_betkeen > 0.06)# and (over_1xbet >= over_betkeen_lay):
             #ajout de la valeur overlay ici
             value_over_lay=over_betkeen_lay
             ecart_over_lay=over_1xbet - over_betkeen_lay
@@ -227,7 +227,7 @@ async def over_under_traitement(lien,lien1,unxbet,ligue,LI,betkeen,_1xbet,a,data
 
             print(value_over_1xbet)
 
-        if (under_1xbet > m_under_betkeen) and (under_1xbet - m_under_betkeen > 0.06) and (under_1xbet >= under_betkeen_lay):
+        if (under_1xbet > m_under_betkeen) and (under_1xbet - m_under_betkeen > 0.06)# and (under_1xbet >= under_betkeen_lay):
             #ajout de la valeur underlay ici
             value_under_lay=under_betkeen_lay
             ecart_under_lay=under_1xbet - under_betkeen_lay

@@ -183,7 +183,7 @@ async def handicap_Traitement(a, data1, a1, *args, **kwargs):
     p_home_handicap_betkeen=(1/home_handicap_betkeen)
     p_away_handicap_betkeen=(1/away_handicap_betkeen)
     marge=(p_away_handicap_betkeen+p_home_handicap_betkeen)-1
-    if marge<0.08 and home_handicap_betkeen<12 and away_handicap_betkeen<12:
+    if marge<0.04 and home_handicap_betkeen<12 and away_handicap_betkeen<12:
         m_home_handicap_betkeen=(2*home_handicap_betkeen)/(2-marge*home_handicap_betkeen)
         m_away_handicap_betkeen=(2*away_handicap_betkeen)/(2-marge*away_handicap_betkeen)
 
